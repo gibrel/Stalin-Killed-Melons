@@ -4,12 +4,11 @@ Stalin Killed Melons é um jogo topdown shooter (tiro visto de cima) desenvolvid
 
 ## Instalação
 
-Para clonar e executar o jogo localmente, você precisará ter o Git e o Git LFS (Large File Storage) instalados em seu ambiente de desenvolvimento. Certifique-se de atualizá-los para as versões mais recentes.
+Para clonar e executar o jogo localmente, você precisará ter o Git instalado em seu ambiente de desenvolvimento. Certifique-se de atualizá-lo para a versão mais recente.
 
 - [Git](https://git-scm.com/) - Sistema de controle de versão para gerenciar arquivos do projeto.
-- [Git LFS](https://git-lfs.github.com/) - Extensão do Git para suporte ao armazenamento de arquivos grandes.
 
-> Observação: O projeto utiliza a ferramenta Git for Unity que inclui sua própria versão do Git e do Git LFS, mas eles podem não estar atualizados. É recomendado atualizar tanto o Git quanto o Git LFS em seu sistema.
+> Observação: O projeto utiliza a ferramenta Git for Unity que inclui sua própria versão do Git, mas ela podem não estar atualizada. É recomendado atualizar o Git em seu sistema.
 
 ## Primeiros Passos
 
@@ -25,11 +24,9 @@ Para começar a desenvolver o Stalin Killed Melons, siga estes passos:
 
 3. Abra o projeto no Unity 3D (versão 2022.3.0f1).
 
-4. Instale o Git LFS usando as instruções fornecidas no [site do Git LFS](https://git-lfs.github.com/).
+4. Compile e execute o jogo no editor do Unity ou exporte-o para a plataforma de sua escolha.
 
-5. Compile e execute o jogo no editor do Unity ou exporte-o para a plataforma de sua escolha.
-
-6. Não é necessário instalar o Git for Unity, mas após abrir o projeto, verifique as configurações usadas seguindo as instruções fornecidas no [repositório do Git for Unity](https://github.com/spoiledcat/git-for-unity).
+5. Não é necessário instalar o Git for Unity, mas após abrir o projeto, verifique as configurações usadas seguindo as instruções fornecidas no [repositório do Git for Unity](https://github.com/spoiledcat/git-for-unity).
 
 ## Contribuindo
 
@@ -47,7 +44,7 @@ Contribuições para o Stalin Killed Melons são bem-vindas! Se você deseja con
 
 ---
 
-Certifique-se de manter o Git e o Git LFS atualizados em seu ambiente de desenvolvimento para garantir a compatibilidade com o projeto. Se você encontrar algum problema, consulte a documentação respectiva ou peça ajuda à comunidade.
+Certifique-se de manter o Git atualizado em seu ambiente de desenvolvimento. Se você encontrar algum problema, consulte a documentação respectiva ou peça ajuda à comunidade.
 
 Se tiver alguma dúvida ou sugestão sobre o Stalin Killed Melons, fique à vontade para entrar em contato conosco.
 
