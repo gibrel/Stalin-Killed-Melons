@@ -7,8 +7,8 @@ namespace StalinKilledMelons.Combat
 {
     public class HealthController : MonoBehaviour
     {
-        [SerializeField] private int health;
-        [SerializeField] private int maxHealth = 100;
+        [SerializeField] private float health;
+        [SerializeField] private float maxHealth = 100;
         [SerializeField] private HealthBar healthBar;
         [SerializeField] private float timeToDie = 1f;
         [SerializeField] private bool timeMode = false;
@@ -17,8 +17,8 @@ namespace StalinKilledMelons.Combat
         private GameTimer gameTimer;
         private PlayerPoints playerPoints;
 
-        public int MaxHealth { get { return maxHealth; } }
-        public int Health { get { return health; } }
+        public float MaxHealth { get { return maxHealth; } }
+        public float Health { get { return health; } }
 
         private void Awake()
         {
@@ -51,7 +51,7 @@ namespace StalinKilledMelons.Combat
             }
         }
 
-        public void TakeDamage(int damage)
+        public void TakeDamage(float damage)
         {
             if (!timeMode && !gameTimer.TimeHasRunOut)
             {

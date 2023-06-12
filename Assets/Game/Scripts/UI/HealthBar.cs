@@ -9,13 +9,13 @@ namespace StalinKilledMelons.UI
         [SerializeField] private Gradient gradient;
         [SerializeField] private Image fill;
 
-        public void SetHealth(int health)
+        public void SetHealth(float health)
         {
             slider.value = health;
             fill.color = gradient.Evaluate(slider.normalizedValue);
         }
 
-        public void SetMaximunHealth(int maxHealth)
+        public void SetMaximunHealth(float maxHealth)
         {
             slider.maxValue = maxHealth;
             slider.value = maxHealth;
