@@ -1,3 +1,4 @@
+using StalinKilledMelons.UI;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,6 +9,7 @@ namespace StalinKilledMelons.General
     {
         [SerializeField] private float timeToWait = 1f;
         [SerializeField] private Animator[] transitions;
+        [SerializeField] private PauseMenu pauseMenu;
 
         private PlayerPreferences playerPreferences;
 
@@ -67,6 +69,20 @@ namespace StalinKilledMelons.General
 #if !UNITY_EDITOR
             StartCoroutine(QuitApplication());
 #endif
+        }
+
+        public void PauseGame()
+        {
+            pauseMenu.ShowPauseMenu();
+            Time.timeScale = 0f;
+            Debug.Log("Game paused!");
+        }
+
+        public void ResumeGame()
+        {
+            pauseMenu.HidePauseMenu();
+            Time.timeScale = 1f;
+            Debug.Log("Game resumed!");
         }
 
         private IEnumerator LoadLevelAsync(string levelName)

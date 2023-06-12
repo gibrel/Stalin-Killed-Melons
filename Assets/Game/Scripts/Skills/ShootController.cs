@@ -15,7 +15,7 @@ namespace StalinKilledMelons.Skills
 
         private void Shoot()
         {
-            if (PauseMenu.GameIsPaused) return;
+            if (Time.timeScale == 0f) return;
 
             foreach (FirearmController gun in firearms)
             {
