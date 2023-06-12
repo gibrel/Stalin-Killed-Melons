@@ -4,11 +4,11 @@ namespace StalinKilledMelons.General
 {
     public class PlayerPoints : MonoBehaviour
     {
-        private int totalPlayerPoints = 0;
+        private float totalPlayerPoints = 0;
 
-        public int PotalPlayerPoints { get { return totalPlayerPoints; } }
+        public float PotalPlayerPoints { get { return totalPlayerPoints; } }
 
-        public void AddPoints(int points)
+        public void AddPoints(float points)
         {
             totalPlayerPoints += points;
 

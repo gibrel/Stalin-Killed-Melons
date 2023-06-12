@@ -16,7 +16,7 @@ namespace StalinKilledMelons.UI
         [SerializeField] private float timeToWait = 0.5f;
 
         private PlayerPoints playerPoints;
-        private LevelLoader levelLoader;
+        private LevelManager levelLoader;
         private GameTimer gameTimer;
 
         private readonly string pointsMessage = "{0} pts";
@@ -26,7 +26,7 @@ namespace StalinKilledMelons.UI
 
         private void Awake()
         {
-            levelLoader = GameObject.FindGameObjectWithTag("LevelLoader").GetComponent<LevelLoader>();
+            levelLoader = GameObject.FindGameObjectWithTag("LevelLoader").GetComponent<LevelManager>();
             var gameController = GameObject.FindGameObjectWithTag("GameController");
             gameTimer = gameController.GetComponent<GameTimer>();
             playerPoints = gameController.GetComponent<PlayerPoints>();

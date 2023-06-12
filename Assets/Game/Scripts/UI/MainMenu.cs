@@ -5,21 +5,21 @@ namespace StalinKilledMelons.UI
 {
     public class MainMenu : MonoBehaviour
     {
-        private LevelLoader levelLoader;
+        private LevelManager levelManager;
 
         private void Awake()
         {
-            levelLoader = GameObject.FindGameObjectWithTag("LevelLoader").GetComponent<LevelLoader>();
+            levelManager = GameObject.FindGameObjectWithTag("LevelLoader").GetComponent<LevelManager>();
         }
 
         public void PlayGame()
         {
-            levelLoader.LoadNextLevel();
+            levelManager.LoadNextLevel();
         }
 
         public void QuitGame()
         {
-            levelLoader.QuitGame();
+            levelManager.QuitGame();
         }
 
     }
