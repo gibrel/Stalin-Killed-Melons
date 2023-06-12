@@ -15,7 +15,7 @@ namespace StalinKilledMelons.UI
         [SerializeField] private TextMeshProUGUI gameOverText;
         [SerializeField] private float timeToWait = 0.5f;
 
-        private PlayerPoints playerPoints;
+        private ScoreManager scoreManager;
         private LevelManager levelLoader;
         private GameTimer gameTimer;
 
@@ -29,7 +29,7 @@ namespace StalinKilledMelons.UI
             levelLoader = GameObject.FindGameObjectWithTag("LevelLoader").GetComponent<LevelManager>();
             var gameController = GameObject.FindGameObjectWithTag("GameController");
             gameTimer = gameController.GetComponent<GameTimer>();
-            playerPoints = gameController.GetComponent<PlayerPoints>();
+            scoreManager = gameController.GetComponent<ScoreManager>();
         }
 
         private void Start()
@@ -73,7 +73,7 @@ namespace StalinKilledMelons.UI
 
             if (gameUIPanel.activeSelf)
             {
-                playerPointsText.text = string.Format(pointsMessage, playerPoints.PotalPlayerPoints);
+                playerPointsText.text = string.Format(pointsMessage, scoreManager.TotalPlayerPoints);
             }
         }
 
@@ -122,7 +122,7 @@ namespace StalinKilledMelons.UI
 
         private void ShowGameOverPanel()
         {
-            gameOverText.text = string.Format(message, playerPoints.PotalPlayerPoints);
+            gameOverText.text = string.Format(message, scoreManager.TotalPlayerPoints);
             gameOverMenuUI.SetActive(true);
         }
 

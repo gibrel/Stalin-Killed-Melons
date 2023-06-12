@@ -15,7 +15,7 @@ namespace StalinKilledMelons.Combat
 
         private SpawnPointManager spawnPointManager;
         private GameTimer gameTimer;
-        private PlayerPoints playerPoints;
+        private ScoreManager scoreManager;
 
         public float MaxHealth { get { return maxHealth; } }
         public float Health { get { return health; } }
@@ -25,7 +25,7 @@ namespace StalinKilledMelons.Combat
             var gameController = GameObject.FindGameObjectWithTag("GameController");
             spawnPointManager = gameController.GetComponent<SpawnPointManager>();
             gameTimer = gameController.GetComponent<GameTimer>();
-            playerPoints = gameController.GetComponent<PlayerPoints>();
+            scoreManager = gameController.GetComponent<ScoreManager>();
         }
 
         private void Start()
@@ -65,7 +65,7 @@ namespace StalinKilledMelons.Combat
 
                 if (!transform.CompareTag("Player"))
                 {
-                    playerPoints.AddPoints(damage);
+                    scoreManager.AddPoints(damage);
                 }
             }
         }
