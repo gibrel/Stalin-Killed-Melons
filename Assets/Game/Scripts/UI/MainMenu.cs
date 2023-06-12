@@ -5,6 +5,8 @@ namespace StalinKilledMelons.UI
 {
     public class MainMenu : MonoBehaviour
     {
+
+        [SerializeField] private GameObject mainMenuUI;
         private LevelManager levelManager;
 
         private void Awake()
@@ -20,6 +22,16 @@ namespace StalinKilledMelons.UI
         public void QuitGame()
         {
             levelManager.QuitGame();
+        }
+
+        public void ShowMainMenu()
+        {
+            mainMenuUI.SetActive(true);
+        }
+
+        public void HideMainMenu()
+        {
+            mainMenuUI.SetActive(false);
         }
 
     }
