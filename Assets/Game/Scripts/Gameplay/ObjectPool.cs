@@ -4,7 +4,7 @@ using UnityEngine;
 namespace StalinKilledMelons.Gameplay
 {
     /// <summary>
-    /// Classe responsável por gerenciar o pooling de objetos, permitindo a reutilização eficiente de objetos do jogo, como projéteis, explosões, powerups e inimigos, em vez de criar e destruir repetidamente.
+    /// Gerencia a reutilização eficiente de objetos do jogo, como projéteis, explosões, power-ups e inimigos.
     /// </summary>
     public class ObjectPool : MonoBehaviour
     {
