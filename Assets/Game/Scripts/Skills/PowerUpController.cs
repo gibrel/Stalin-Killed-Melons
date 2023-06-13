@@ -1,22 +1,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Game.Scripts.Skills
+namespace StalinKilledMelons.PowerUps
 {
     /// <summary>
-    /// Gerenciador de power-ups do jogo.
+    /// Controla o comportamento e efeitos dos power-ups no jogo.
     /// </summary>
-    public class PowerUpManager : MonoBehaviour
+    public class PowerUpController : MonoBehaviour
     {
         [SerializeField] private List<PowerUp> powerUps; // Lista de power-ups distintos
-        [SerializeField] private float speedBoostDuration = 5f; // Duração do aumento de velocidade do jogador
         [SerializeField] private float powerUpSpawnTime = 10f; // Tempo entre o surgimento de power-ups
 
         private bool isPowerUpActive = false; // Indica se um power-up está ativo no momento
 
         private void Start()
         {
-            InvokeRepeating("SpawnPowerUp", powerUpSpawnTime, powerUpSpawnTime); // Inicia a repetição do surgimento de power-ups
+            InvokeRepeating(nameof(SpawnPowerUp), powerUpSpawnTime, powerUpSpawnTime); // Inicia a repetição do surgimento de power-ups
         }
 
         /// <summary>
@@ -32,23 +31,25 @@ namespace Assets.Game.Scripts.Skills
                 // Lógica para instanciar um power-up no jogo
                 // Por exemplo, você pode criar um objeto PowerUp na cena e ativá-lo
 
-                isPowerUpActive = true;
+                // Armazena o power-up selecionado para uso posterior
+                ActivatePowerUp(randomPowerUp);
             }
         }
 
         /// <summary>
         /// Ativa o efeito do power-up.
         /// </summary>
-        public void ActivatePowerUp()
+        /// <param name="powerUp">O power-up a ser ativado.</param>
+        private void ActivatePowerUp(PowerUp powerUp)
         {
             if (isPowerUpActive)
-            {
-                // Lógica para ativar o efeito do power-up no jogador
-                // Por exemplo, aumentar a velocidade do jogador por um determinado período de tempo
+                return;
 
-                // Desativa o power-up após o tempo especificado
-                Invoke("DeactivatePowerUp", speedBoostDuration);
-            }
+            // Lógica para ativar o efeito do power-up no jogador
+            // Por exemplo, aumentar a velocidade do jogador por um determinado período de tempo
+
+            // Desativa o power-up após o tempo especificado
+            Invoke(nameof(DeactivatePowerUp), powerUp.duration);
         }
 
         /// <summary>
@@ -69,9 +70,26 @@ namespace Assets.Game.Scripts.Skills
     [System.Serializable]
     public class PowerUp
     {
-        public string name; // Nome do power-up
+        public PowerUpType type; // Tipo do power-up
         public float duration; // Duração do efeito do power-up
 
         // Adicione aqui quaisquer outros parâmetros específicos do power-up
+    }
+
+    /// <summary>
+    /// Enum que representa os tipos de power-ups disponíveis no jogo.
+    /// </summary>
+    public enum PowerUpType
+    {
+        SpeedBoost,          // Aumento de velocidade
+        Shield,              // Escudo
+        DamageBoost,         // Aumento de dano
+        HealthPack,          // Pacote de saúde
+        AmmoRefill,          // Recarga de munição
+        Invisibility,        // Invisibilidade
+        HealthRegeneration,  // Regeneração de saúde
+        TimeSlowdown,        // Desaceleração do tempo
+        FireRateBoost,       // Aumento da taxa de disparo
+        ScoreMultiplier      // Multiplicador de pontuação
     }
 }
