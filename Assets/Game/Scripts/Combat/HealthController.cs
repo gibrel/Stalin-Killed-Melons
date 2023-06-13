@@ -16,7 +16,7 @@ namespace StalinKilledMelons.Combat
         [SerializeField] private float timeToDie = 1f; // Tempo até a destruição após a saúde chegar a zero
         [SerializeField] private bool timeMode = false; // Modo de jogo baseado em tempo
 
-        private SpawnPointManager spawnPointManager; // Gerenciador dos pontos de spawn
+        private EnemySpawner spawnPointManager; // Gerenciador dos pontos de spawn
         private GameTimer gameTimer; // Timer do jogo
         private ScoreManager scoreManager; // Gerenciador de pontuação
 
@@ -33,7 +33,7 @@ namespace StalinKilledMelons.Combat
         private void Awake()
         {
             var gameController = GameObject.FindGameObjectWithTag("GameController");
-            spawnPointManager = gameController.GetComponent<SpawnPointManager>();
+            spawnPointManager = gameController.GetComponent<EnemySpawner>();
             gameTimer = gameController.GetComponent<GameTimer>();
             scoreManager = gameController.GetComponent<ScoreManager>();
         }
@@ -89,7 +89,7 @@ namespace StalinKilledMelons.Combat
             yield return new WaitForSeconds(timeToDie);
             if (!gameObject.CompareTag("Player"))
             {
-                spawnPointManager.DecreaseObjects();
+                spawnPointManager.DecreaseEnemyCount();
             }
             Destroy(gameObject);
         }
