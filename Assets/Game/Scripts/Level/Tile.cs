@@ -11,7 +11,7 @@ namespace StalinKilledMelons.Level
         [SerializeField] private Material[] materials; // Materiais para cada tema
 
         /// <summary>
-        /// Define o tema do tile.
+        /// Define o tema do tile e atualiza a aparência.
         /// </summary>
         /// <param name="theme">O tema do tile.</param>
         public void SetTheme(LevelTheme theme)
@@ -21,7 +21,7 @@ namespace StalinKilledMelons.Level
         }
 
         /// <summary>
-        /// Atualiza a aparência do tile com base no tema.
+        /// Atualiza a aparência do tile com base no tema definido.
         /// </summary>
         private void UpdateAppearance()
         {

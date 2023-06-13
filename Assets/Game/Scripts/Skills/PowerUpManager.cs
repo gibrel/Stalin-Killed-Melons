@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Assets.Game.Scripts.Skills
 {
+    /// <summary>
+    /// Gerenciador de power-ups do jogo.
+    /// </summary>
     public class PowerUpManager : MonoBehaviour
     {
         [SerializeField] private List<PowerUp> powerUps; // Lista de power-ups distintos
@@ -16,6 +19,9 @@ namespace Assets.Game.Scripts.Skills
             InvokeRepeating("SpawnPowerUp", powerUpSpawnTime, powerUpSpawnTime); // Inicia a repetição do surgimento de power-ups
         }
 
+        /// <summary>
+        /// Surgimento de um power-up no jogo.
+        /// </summary>
         private void SpawnPowerUp()
         {
             if (!isPowerUpActive)
@@ -30,6 +36,9 @@ namespace Assets.Game.Scripts.Skills
             }
         }
 
+        /// <summary>
+        /// Ativa o efeito do power-up.
+        /// </summary>
         public void ActivatePowerUp()
         {
             if (isPowerUpActive)
@@ -42,6 +51,9 @@ namespace Assets.Game.Scripts.Skills
             }
         }
 
+        /// <summary>
+        /// Desativa o efeito do power-up.
+        /// </summary>
         private void DeactivatePowerUp()
         {
             // Lógica para desativar o efeito do power-up no jogador
@@ -51,6 +63,9 @@ namespace Assets.Game.Scripts.Skills
         }
     }
 
+    /// <summary>
+    /// Classe que representa um power-up do jogo.
+    /// </summary>
     [System.Serializable]
     public class PowerUp
     {

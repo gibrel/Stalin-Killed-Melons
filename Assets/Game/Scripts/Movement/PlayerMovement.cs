@@ -2,15 +2,18 @@ using UnityEngine;
 
 namespace StalinKilledMelons.Movement
 {
+    /// <summary>
+    /// Classe responsável pelo movimento do jogador.
+    /// </summary>
     [RequireComponent(typeof(Navigation))]
     public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField] private float moveSpeed = 5f;
-        private Navigation naviagtion;
+        [SerializeField] private float moveSpeed = 5f; // Velocidade de movimento do jogador
+        private Navigation navigation; // Componente de navegação
 
         private void Awake()
         {
-            naviagtion = GetComponent<Navigation>();
+            navigation = GetComponent<Navigation>();
         }
 
         private void Update()
@@ -18,11 +21,15 @@ namespace StalinKilledMelons.Movement
             HandleInput();
         }
 
+        /// <summary>
+        /// Lida com a entrada do jogador para mover o personagem.
+        /// </summary>
         private void HandleInput()
         {
             float moveX = 0f;
             float moveZ = 0f;
 
+            // Verifica as teclas pressionadas para determinar o movimento
             if (Input.GetKey(KeyCode.W))
             {
                 moveZ = 1f;
@@ -42,7 +49,7 @@ namespace StalinKilledMelons.Movement
             }
 
             Vector3 movement = new Vector3(moveX, 0f, moveZ).normalized * moveSpeed;
-            naviagtion.SetTarget(movement);
+            navigation.SetTarget(movement);
         }
     }
 }

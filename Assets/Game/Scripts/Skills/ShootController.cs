@@ -1,18 +1,23 @@
 using StalinKilledMelons.Combat;
-using StalinKilledMelons.UI;
 using UnityEngine;
 
 namespace StalinKilledMelons.Skills
 {
+    /// <summary>
+    /// Classe responsável pelo controle de disparo de armas.
+    /// </summary>
     public class ShootController : MonoBehaviour
     {
         [SerializeField] private FirearmController[] firearms;
 
-        void Update()
+        private void Update()
         {
             Shoot();
         }
 
+        /// <summary>
+        /// Realiza o disparo das armas controladas pelo jogador.
+        /// </summary>
         private void Shoot()
         {
             if (Time.timeScale == 0f) return;
@@ -33,5 +38,4 @@ namespace StalinKilledMelons.Skills
             }
         }
     }
-
 }

@@ -5,36 +5,49 @@ using UnityEngine.SceneManagement;
 
 namespace StalinKilledMelons.General
 {
+    /// <summary>
+    /// Gerencia os níveis do jogo e suas transições.
+    /// </summary>
     public class LevelManager : MonoBehaviour
     {
-        [SerializeField] private float timeToWait = 1f;
-        [SerializeField] private Animator[] transitions;
-        [SerializeField] private PauseMenu pauseMenu;
+        [SerializeField] private float timeToWait = 1f; // Tempo de espera antes de carregar um novo nível ou encerrar o jogo.
+        [SerializeField] private Animator[] transitions; // Array de animators para as transições entre os níveis.
+        [SerializeField] private PauseMenu pauseMenu; // Referência ao menu de pausa.
 
-        private PlayerPreferences playerPreferences;
+        private PlayerPreferences playerPreferences; // Referência para o PlayerPreferences, responsável por armazenar as preferências do jogador.
 
         private void Awake()
         {
-            playerPreferences = GameObject.FindGameObjectWithTag("PlayerPreferences").GetComponent<PlayerPreferences>();
+            playerPreferences = GameObject.FindGameObjectWithTag("PlayerPreferences").GetComponent<PlayerPreferences>(); // Encontra o PlayerPreferences na cena e atribui à variável playerPreferences.
         }
 
         private void SavePreferences()
         {
-            playerPreferences.SavePlayerPreferences();
+            playerPreferences.SavePlayerPreferences(); // Salva as preferências do jogador.
         }
 
+        /// <summary>
+        /// Carrega um nível específico com base no nome fornecido.
+        /// </summary>
+        /// <param name="levelName">Nome do nível a ser carregado.</param>
         public void LoadLevel(string levelName)
         {
             SavePreferences();
             StartCoroutine(LoadLevelAsync(levelName));
         }
 
+        /// <summary>
+        /// Recarrega o nível atual.
+        /// </summary>
         public void ReloadLevel()
         {
             SavePreferences();
             StartCoroutine(LoadLevelAsync(SceneManager.GetActiveScene().name));
         }
 
+        /// <summary>
+        /// Carrega o próximo nível na sequência.
+        /// </summary>
         public void LoadNextLevel()
         {
             SavePreferences();
@@ -45,10 +58,13 @@ namespace StalinKilledMelons.General
             }
             else
             {
-                Debug.LogWarning("No next level available.");
+                Debug.LogWarning("Nenhum próximo nível disponível.");
             }
         }
 
+        /// <summary>
+        /// Carrega o nível anterior na sequência.
+        /// </summary>
         public void LoadPreviousLevel()
         {
             SavePreferences();
@@ -59,10 +75,13 @@ namespace StalinKilledMelons.General
             }
             else
             {
-                Debug.LogWarning("No previous level available.");
+                Debug.LogWarning("Nenhum nível anterior disponível.");
             }
         }
 
+        /// <summary>
+        /// Encerra o jogo.
+        /// </summary>
         public void QuitGame()
         {
             SavePreferences();
@@ -71,18 +90,24 @@ namespace StalinKilledMelons.General
 #endif
         }
 
+        /// <summary>
+        /// Pausa o jogo.
+        /// </summary>
         public void PauseGame()
         {
             pauseMenu.ShowPauseMenu();
             Time.timeScale = 0f;
-            Debug.Log("Game paused!");
+            Debug.Log("Jogo pausado!");
         }
 
+        /// <summary>
+        /// Retoma o jogo.
+        /// </summary>
         public void ResumeGame()
         {
             pauseMenu.HidePauseMenu();
             Time.timeScale = 1f;
-            Debug.Log("Game resumed!");
+            Debug.Log("Jogo retomado!");
         }
 
         private IEnumerator LoadLevelAsync(string levelName)

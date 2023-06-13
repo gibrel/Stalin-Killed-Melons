@@ -5,24 +5,28 @@ using UnityEngine;
 
 namespace StalinKilledMelons.Audio
 {
+    public enum Sound
+    {
+        GunFire,
+        GrenadeExplosion,
+        BarrelExplosion,
+        WoodCreek,
+        ButtonClick,
+        ButtonHover,
+        ButtonSwitch
+    }
+
+    public enum Music
+    {
+        MenuMusic,
+        GameMusic
+    }
+
+    /// <summary>
+    /// Gerencia a reprodução de sons e música no jogo.
+    /// </summary>
     public static class SoundManager
     {
-        public enum Sound
-        {
-            GunFire,
-            GrenadeExplosion,
-            BarrelExplosion,
-            WoodCreek,
-            ButtonClick,
-            ButtonOver,
-            ButtonSwitch
-        }
-        public enum Music
-        {
-            MenuMusic,
-            GameMusic
-        }
-
         private static Dictionary<Sound, float> soundTimerDictionary = new Dictionary<Sound, float>();
         private static Dictionary<Sound, float> soundMaxDurationDictionary = new Dictionary<Sound, float>();
         private static GameObject oneShotGameObject;
@@ -33,6 +37,9 @@ namespace StalinKilledMelons.Audio
         private static GameObject musicGameObject;
         private static AudioSource musicAudioSource;
 
+        /// <summary>
+        /// Reproduz a música especificada.
+        /// </summary>
         public static void PlayMusic(Music music)
         {
             if (CanPlayMusic(music))
@@ -49,6 +56,9 @@ namespace StalinKilledMelons.Audio
             }
         }
 
+        /// <summary>
+        /// Reproduz o som especificado.
+        /// </summary>
         public static void PlaySound(Sound sound)
         {
             if (CanPlaySound(sound))
@@ -63,6 +73,9 @@ namespace StalinKilledMelons.Audio
             }
         }
 
+        /// <summary>
+        /// Reproduz o som especificado em uma determinada posição no espaço.
+        /// </summary>
         public static void PlaySound(Sound sound, Vector3 position)
         {
             if (CanPlaySound(sound))
@@ -151,7 +164,7 @@ namespace StalinKilledMelons.Audio
 
         private static float GetAudioClipMaximumDuration(Music music)
         {
-            var soundAudioClip = GameAssets.Instance.musicAudioClips.Where(m => m.music == music).OrderByDescending(s => s.audioClip.length).First();
+            var soundAudioClip = GameAssets.Instance.musicAudioClips.Where(m => m.music == music).OrderByDescending(s => s.audioClip.length).FirstOrDefault();
 
             if (soundAudioClip == null)
             {
@@ -164,7 +177,7 @@ namespace StalinKilledMelons.Audio
 
         private static float GetAudioClipMaximumDuration(Sound sound)
         {
-            var soundAudioClip = GameAssets.Instance.soundAudioClips.Where(s => s.sound == sound).OrderByDescending(s => s.audioClip.length).First();
+            var soundAudioClip = GameAssets.Instance.soundAudioClips.Where(s => s.sound == sound).OrderByDescending(s => s.audioClip.length).FirstOrDefault();
 
             if (soundAudioClip == null)
             {

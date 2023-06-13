@@ -4,6 +4,9 @@ using UnityEngine.AI;
 
 namespace StalinKilledMelons.AI
 {
+    /// <summary>
+    /// Controla o comportamento de um inimigo.
+    /// </summary>
     public class EnemyController : MonoBehaviour
     {
         [SerializeField] private float activationDistance = 10f;
@@ -18,6 +21,9 @@ namespace StalinKilledMelons.AI
         private bool erraticallyMoving = false;
         private float lastErraticMovementTime;
 
+        /// <summary>
+        /// Chamado quando o objeto é criado.
+        /// </summary>
         private void Awake()
         {
             player = GameObject.FindGameObjectWithTag("Player");
@@ -25,6 +31,9 @@ namespace StalinKilledMelons.AI
             navigation = GetComponent<Navigation>();
         }
 
+        /// <summary>
+        /// Chamado a cada quadro.
+        /// </summary>
         private void Update()
         {
             if (!activated)
@@ -35,16 +44,20 @@ namespace StalinKilledMelons.AI
                 }
                 else
                 {
-                    ErraticMovement();
+                    PerformErraticMovement();
                 }
             }
             else
             {
                 navigation.SetTarget(player.transform);
-                ErraticMovement();
+                PerformErraticMovement();
             }
         }
 
+        /// <summary>
+        /// Verifica se o inimigo deve ser ativado.
+        /// </summary>
+        /// <returns><c>true</c> se o inimigo deve ser ativado, caso contrário, <c>false</c>.</returns>
         private bool ShouldActivate()
         {
             float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
@@ -63,13 +76,19 @@ namespace StalinKilledMelons.AI
             return false;
         }
 
+        /// <summary>
+        /// Ativa o inimigo.
+        /// </summary>
         private void Activate()
         {
             activated = true;
             navigation.SetTarget(player.transform);
         }
 
-        private void ErraticMovement()
+        /// <summary>
+        /// Realiza o movimento errático.
+        /// </summary>
+        private void PerformErraticMovement()
         {
             if (Time.time - lastErraticMovementTime >= erraticMovementInterval)
             {

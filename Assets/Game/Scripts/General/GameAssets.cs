@@ -4,18 +4,24 @@ using UnityEngine.Audio;
 
 namespace StalinKilledMelons.General
 {
+    /// <summary>
+    /// Armazena os ativos de áudio do jogo, como clipes de música e efeitos sonoros, bem como a configuração do mixer de áudio.
+    /// </summary>
     public class GameAssets : MonoBehaviour
     {
         private static GameAssets _instance;
 
-        //[Header("Music")]
-        public MusicAudioClip[] musicAudioClips;
+        [Header("Música")]
+        public MusicAudioClip[] musicAudioClips; // Array de clipes de áudio para as músicas do jogo.
 
-        //[Header("Sound FX")]
-        public SoundAudioClip[] soundAudioClips;
+        [Header("Efeitos Sonoros")]
+        public SoundAudioClip[] soundAudioClips; // Array de clipes de áudio para os efeitos sonoros do jogo.
 
-        public AudioMixer audioMixer;
+        public AudioMixer audioMixer; // Mixer de áudio utilizado para controlar o volume e outras configurações de áudio.
 
+        /// <summary>
+        /// Retorna uma instância única da classe GameAssets.
+        /// </summary>
         public static GameAssets Instance
         {
             get
@@ -28,19 +34,24 @@ namespace StalinKilledMelons.General
             }
         }
 
+        /// <summary>
+        /// Classe que associa um enum de som a um AudioClip.
+        /// </summary>
         [System.Serializable]
         public class SoundAudioClip
         {
-            public SoundManager.Sound sound;
-            public AudioClip audioClip;
+            public Sound sound; // Enumeração que representa um som específico.
+            public AudioClip audioClip; // O clip de áudio correspondente ao som.
         }
 
+        /// <summary>
+        /// Classe que associa um enum de música a um AudioClip.
+        /// </summary>
         [System.Serializable]
         public class MusicAudioClip
         {
-            public SoundManager.Music music;
-            public AudioClip audioClip;
+            public Music music; // Enumeração que representa uma música específica.
+            public AudioClip audioClip; // O clip de áudio correspondente à música.
         }
     }
-
 }

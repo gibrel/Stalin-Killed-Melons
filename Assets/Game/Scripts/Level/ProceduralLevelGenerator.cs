@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace StalinKilledMelons.Level
 {
+    /// <summary>
+    /// Classe responsável por gerar um nível proceduralmente.
+    /// </summary>
     public class ProceduralLevelGenerator : MonoBehaviour
     {
         [SerializeField] private LevelGenerator levelGenerator; // Referência ao script LevelGenerator
@@ -13,6 +16,9 @@ namespace StalinKilledMelons.Level
             GenerateProceduralLevel();
         }
 
+        /// <summary>
+        /// Gera um nível procedural utilizando o LevelGenerator.
+        /// </summary>
         private void GenerateProceduralLevel()
         {
             int width = Random.Range(3, 10); // Largura aleatória do mapa

@@ -1,54 +1,63 @@
-using StalinKilledMelons.Combat;
 using UnityEngine;
 
-public class ExplosionGenerator : MonoBehaviour
+namespace StalinKilledMelons.Combat
 {
-    public float explosionRadius = 5f; // Raio da explosão
-    public float explosionForce = 10f; // Força da explosão
-    public float damage = 50f; // Dano causado pela explosão
 
-    public GameObject explosionParticlesPrefab; // Prefab das partículas da explosão
-    public Animator explosionAnimator; // Animator para controlar a animação da explosão
-
-    private void Start()
+    /// <summary>
+    /// Classe responsável por gerar uma explosão no ambiente.
+    /// </summary>
+    public class ExplosionGenerator : MonoBehaviour
     {
-        Explode();
-    }
+        public float explosionRadius = 5f; // Raio da explosão
+        public float explosionForce = 10f; // Força da explosão
+        public float damage = 50f; // Dano causado pela explosão
 
-    private void Explode()
-    {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
+        public GameObject explosionParticlesPrefab; // Prefab das partículas da explosão
+        public Animator explosionAnimator; // Animator para controlar a animação da explosão
 
-        foreach (Collider hitCollider in colliders)
+        private void Start()
         {
-            Rigidbody rb = hitCollider.GetComponent<Rigidbody>();
+            Explode();
+        }
 
-            if (rb != null)
+        /// <summary>
+        /// Gera a explosão, causando dano e aplicando força aos objetos afetados.
+        /// </summary>
+        private void Explode()
+        {
+            Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
+
+            foreach (Collider hitCollider in colliders)
             {
-                rb.AddExplosionForce(explosionForce, transform.position, explosionRadius);
+                Rigidbody rb = hitCollider.GetComponent<Rigidbody>();
 
-                // Aplica dano ao objeto se ele tiver um componente de vida
-                HealthController healthController = hitCollider.GetComponent<HealthController>();
-                if (healthController != null)
+                if (rb != null)
                 {
-                    healthController.TakeDamage(damage);
+                    rb.AddExplosionForce(explosionForce, transform.position, explosionRadius);
+
+                    // Aplica dano ao objeto se ele tiver um componente de vida
+                    HealthController healthController = hitCollider.GetComponent<HealthController>();
+                    if (healthController != null)
+                    {
+                        healthController.TakeDamage(damage);
+                    }
                 }
             }
-        }
 
-        if (explosionParticlesPrefab != null)
-        {
-            // Instancia as partículas da explosão
-            Instantiate(explosionParticlesPrefab, transform.position, Quaternion.identity);
-        }
+            if (explosionParticlesPrefab != null)
+            {
+                // Instancia as partículas da explosão
+                Instantiate(explosionParticlesPrefab, transform.position, Quaternion.identity);
+            }
 
-        if (explosionAnimator != null)
-        {
-            // Ativa a animação da explosão
-            explosionAnimator.SetTrigger("Explode");
-        }
+            if (explosionAnimator != null)
+            {
+                // Ativa a animação da explosão
+                explosionAnimator.SetTrigger("Explode");
+            }
 
-        // Destroi o objeto da explosão após um tempo
-        Destroy(gameObject, 1f);
+            // Destroi o objeto da explosão após um tempo
+            Destroy(gameObject, 1f);
+        }
     }
 }
