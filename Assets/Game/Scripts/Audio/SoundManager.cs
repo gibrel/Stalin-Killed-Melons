@@ -5,22 +5,29 @@ using UnityEngine;
 
 namespace StalinKilledMelons.Audio
 {
+    /// <summary>
+    /// Sons do jogo.
+    /// </summary>
     public enum Sound
     {
-        GunFire,
-        GrenadeExplosion,
-        BarrelExplosion,
-        WoodCreek,
-        ButtonClick,
-        ButtonHover,
-        ButtonSwitch
+        GunFire,             // Som do disparo de arma
+        GrenadeExplosion,    // Som da explosão de granada
+        BarrelExplosion,     // Som da explosão de barril
+        WoodCreek,           // Som de madeira rangendo
+        ButtonClick,         // Som de clique em botão
+        ButtonHover,         // Som de hover em botão
+        ButtonSwitch         // Som de troca de botão
     }
 
+    /// <summary>
+    /// Músicas do jogo.
+    /// </summary>
     public enum Music
     {
-        MenuMusic,
-        GameMusic
+        MenuMusic,    // Música do menu
+        GameMusic     // Música do jogo
     }
+
 
     /// <summary>
     /// Gerencia a reprodução de sons e música no jogo.
