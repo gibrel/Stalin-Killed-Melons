@@ -25,55 +25,33 @@ namespace StalinKilledMelons.Level
     public class LevelGenerator : MonoBehaviour
     {
         [SerializeField] private TileSettings[] tileSettings; // Array de configurações dos blocos do nível
-        [SerializeField] private int mapWidth = 10; // Largura do mapa
-        [SerializeField] private int mapHeight = 10; // Altura do mapa
-        [SerializeField] private float tileWidth = 1f; // Largura do tile
-        [SerializeField] private float tileHeight = 1f; // Altura do tile
+        [SerializeField] private int maxWidth = 10; // Largura máxima do nível
+        [SerializeField] private int maxHeight = 10; // Altura máxima do nível
+        [SerializeField] private int tileWidth = 1; // Largura do bloco
+        [SerializeField] private int tileHeight = 1; // Altura do bloco
 
-        private Transform levelContainer; // Transform para agrupar os blocos do nível
+        public Transform LevelContainer { get; private set; } // Transform para agrupar os blocos do nível
+
+        public int MaxWidth { get { return maxWidth; } }
+        public int MaxHeight { get { return maxHeight; } }
+        public int TileWidth { get { return tileWidth; } }
+        public int TileHeight { get { return tileHeight; } }
+
+        private int width; // Largura do nível
+        private int height; // Altura do nível
 
         private void Start()
         {
-            levelContainer = new GameObject("Level").transform; // Cria um objeto vazio para agrupar os blocos do nível
+            LevelContainer = new GameObject("Level").transform; // Cria um objeto vazio para agrupar os blocos do nível
 
-            GenerateLevel(mapWidth, mapHeight); // Gera o nível com base na largura e altura do mapa
+            GenerateLevel();
         }
 
-        public void GenerateLevel(int width, int height)
-        {
-            GameObject terrainObject = FindOrCreateTerrainObject();
-
-            // Limpa os blocos existentes
-            foreach (Transform child in terrainObject.transform)
-            {
-                Destroy(child.gameObject);
-            }
-
-            // Gera novos blocos
-            for (int x = 0; x < width; x++)
-            {
-                for (int y = 0; y < height; y++)
-                {
-                    // Determina a posição do bloco
-                    Vector3 tilePosition = new Vector3(x * tileWidth, 0, y * tileHeight);
-
-                    // Obtém uma configuração de bloco aleatória
-                    TileSettings randomTileSettings = GetRandomTileSetting();
-
-                    // Instancia o objeto de bloco
-                    GameObject tile = Instantiate(randomTileSettings.tilePrefab, tilePosition, Quaternion.Euler(randomTileSettings.rotation));
-
-                    // Define o objeto de terreno como pai do bloco
-                    tile.transform.SetParent(terrainObject.transform);
-                }
-            }
-        }
-
-        private GameObject FindOrCreateTerrainObject()
+        public void GenerateLevel()
         {
             GameObject terrainObject = GameObject.FindGameObjectWithTag("Terrain");
 
-            // Cria o objeto de terreno se ele não existir
+            // Create terrain object if it doesn't exist
             if (terrainObject == null)
             {
                 terrainObject = new GameObject("Terrain");
@@ -81,13 +59,40 @@ namespace StalinKilledMelons.Level
                 terrainObject.transform.position = Vector3.zero;
             }
 
-            return terrainObject;
+            // Clear existing tiles
+            foreach (Transform child in terrainObject.transform)
+            {
+                Destroy(child.gameObject);
+            }
+
+            // Generate new tiles
+            for (int x = 0; x < width; x++)
+            {
+                for (int y = 0; y < height; y++)
+                {
+                    // Determine the tile position
+                    Vector3 tilePosition = new Vector3(x * tileWidth, 0, y * tileHeight);
+
+                    // Instantiate the tile object
+                    GameObject tile = Instantiate(GetRandomTileSetting().tilePrefab, tilePosition, Quaternion.identity);
+
+                    // Set the terrain object as the parent of the tile
+                    tile.transform.SetParent(terrainObject.transform);
+                }
+            }
         }
 
-        private TileSettings GetRandomTileSetting()
+        public TileSettings GetRandomTileSetting()
         {
             int randomIndex = Random.Range(0, tileSettings.Length); // Gera um índice aleatório dentro do intervalo do array
             return tileSettings[randomIndex]; // Retorna a configuração correspondente ao índice aleatório
         }
+
+        public void SetLevelSize(int width, int height)
+        {
+            this.width = width;
+            this.height = height;
+        }
     }
+
 }
