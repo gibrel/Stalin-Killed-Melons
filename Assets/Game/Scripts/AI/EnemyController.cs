@@ -79,10 +79,27 @@ namespace StalinKilledMelons.AI
         /// <summary>
         /// Ativa o inimigo.
         /// </summary>
-        private void Activate()
+        public void Activate()
         {
             activated = true;
             navigation.SetTarget(player.transform);
+        }
+
+        /// <summary>
+        /// Desativa o inimigo.
+        /// </summary>
+        public void Deactivate()
+        {
+            activated = false;
+        }
+
+        /// <summary>
+        /// Define o novo alvo para o inimigo.
+        /// </summary>
+        /// <param name="target">O novo alvo para o inimigo.</param>
+        public void SetTarget(Transform target)
+        {
+            navigation.SetTarget(target);
         }
 
         /// <summary>
