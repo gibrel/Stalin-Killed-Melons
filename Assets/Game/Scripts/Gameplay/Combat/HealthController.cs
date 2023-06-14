@@ -32,7 +32,7 @@ namespace StalinKilledMelons.Gameplay.Combat
 
         private void Awake()
         {
-            var gameController = GameObject.FindGameObjectWithTag("GameController");
+            var gameController = GameObject.FindGameObjectWithTag(Constants.GameControllerTag);
             spawnPointManager = gameController.GetComponent<EnemySpawner>();
             gameTimer = gameController.GetComponent<GameTimer>();
             scoreManager = gameController.GetComponent<ScoreManager>();
@@ -77,7 +77,7 @@ namespace StalinKilledMelons.Gameplay.Combat
                 }
                 healthBar.SetHealth(health);
 
-                if (!transform.CompareTag("Player"))
+                if (!transform.CompareTag(Constants.PlayerTag))
                 {
                     scoreManager.AddPoints(damage);
                 }
@@ -87,7 +87,7 @@ namespace StalinKilledMelons.Gameplay.Combat
         private IEnumerator SelfDestruct()
         {
             yield return new WaitForSeconds(timeToDie);
-            if (!gameObject.CompareTag("Player"))
+            if (!gameObject.CompareTag(Constants.PlayerTag))
             {
                 spawnPointManager.DecreaseEnemyCount();
             }

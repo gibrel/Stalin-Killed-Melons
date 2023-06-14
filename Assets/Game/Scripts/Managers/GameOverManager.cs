@@ -35,7 +35,7 @@ namespace StalinKilledMelons.Managers
         /// </summary>
         public void ReturnToMainMenu()
         {
-            levelManager.LoadLevel("MainMenu");
+            levelManager.LoadLevel(Constants.MainMenuScene);
         }
     }
 }

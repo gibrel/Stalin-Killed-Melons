@@ -18,7 +18,7 @@ namespace StalinKilledMelons.Gameplay.Movement
             navMeshAgent = GetComponent<NavMeshAgent>();
             navMeshAgent.updateRotation = false;
             navMeshAgent.updateUpAxis = false;
-            destination = GameObject.FindGameObjectWithTag("Player").transform;
+            destination = GameObject.FindGameObjectWithTag(Constants.PlayerTag).transform;
         }
 
         private void Update()

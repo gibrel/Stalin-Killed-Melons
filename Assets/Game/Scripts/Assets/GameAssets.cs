@@ -11,10 +11,10 @@ namespace StalinKilledMelons.Assets
     {
         private static GameAssets _instance;
 
-        [Header("Música")]
+        [Header(Constants.MusicHeader)]
         public MusicAudioClip[] musicAudioClips; // Array de clipes de áudio para as músicas do jogo.
 
-        [Header("Efeitos Sonoros")]
+        [Header(Constants.SoundFxHeader)]
         public SoundAudioClip[] soundAudioClips; // Array de clipes de áudio para os efeitos sonoros do jogo.
 
         public AudioMixer audioMixer; // Mixer de áudio utilizado para controlar o volume e outras configurações de áudio.
@@ -28,7 +28,7 @@ namespace StalinKilledMelons.Assets
             {
                 if (_instance == null)
                 {
-                    _instance = (Instantiate(Resources.Load("GameAssets")) as GameObject).GetComponent<GameAssets>();
+                    _instance = (Instantiate(Resources.Load(Constants.GameAssetsResource)) as GameObject).GetComponent<GameAssets>();
                 }
                 return _instance;
             }

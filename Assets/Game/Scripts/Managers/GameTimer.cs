@@ -27,17 +27,17 @@ namespace StalinKilledMelons.Managers
 
         private void Awake()
         {
-            playerPreferences = GameObject.FindGameObjectWithTag("PlayerPreferences").GetComponent<PlayerPreferences>(); // Encontra o PlayerPreferences na cena e atribui à variável playerPreferences.
+            playerPreferences = GameObject.FindGameObjectWithTag(Constants.PlayerPreferencesTag).GetComponent<PlayerPreferences>(); // Encontra o PlayerPreferences na cena e atribui à variável playerPreferences.
         }
 
         private void Start()
         {
             gameTime = playerPreferences.GameTime * 60f; // Obtém a duração do jogo a partir das preferências do jogador e converte de minutos para segundos.
 
-            if (gameTime is not >= 60f or not <= 180f) // Verifica se a duração do jogo está dentro do intervalo esperado (entre 1 minuto e 3 horas).
+            if (gameTime is not >= Constants.MinLevelDuration or not <= Constants.MaxLevelDuration) // Verifica se a duração do jogo está dentro do intervalo esperado
             {
                 Debug.LogError("Não foi possível carregar a duração do jogo como esperado.");
-                gameTime = 60f; // Define o valor padrão de 1 minuto.
+                gameTime = Constants.MinLevelDuration; // Define o valor padrão de 1 minuto.
             }
         }
     }

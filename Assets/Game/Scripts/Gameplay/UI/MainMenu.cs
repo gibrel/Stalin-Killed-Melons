@@ -13,7 +13,7 @@ namespace StalinKilledMelons.Gameplay.UI
 
         private void Awake()
         {
-            levelManager = GameObject.FindGameObjectWithTag("LevelLoader").GetComponent<LevelManager>();
+            levelManager = GameObject.FindGameObjectWithTag(Constants.LevelLoaderTag).GetComponent<LevelManager>();
         }
 
         /// <summary>

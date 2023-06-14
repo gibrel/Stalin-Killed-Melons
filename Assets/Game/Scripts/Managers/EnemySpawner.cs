@@ -8,16 +8,14 @@ namespace StalinKilledMelons.Managers
     public class EnemySpawner : MonoBehaviour
     {
         [SerializeField] private GameObject[] enemyPrefabs; // Prefabs dos inimigos que podem ser spawnados.
-        [SerializeField] private int maxSimultaneousEnemies = 10; // Quantidade máxima de inimigos simultâneos permitidos.
-        [SerializeField] private float minDistanceToSpawn = 20f; // Distância mínima em relação ao jogador para spawnar inimigos.
+        [SerializeField] private int maxSimultaneousEnemies = Constants.MaxEnemiesOnScreen; // Quantidade máxima de inimigos simultâneos permitidos.
+        [SerializeField] private float minDistanceToSpawn = Constants.MinDistanceToSpawn; // Distância mínima em relação ao jogador para spawnar inimigos.
         [SerializeField] private float timeBetweenSpawns = 5f; // Tempo mínimo entre cada spawn.
 
         private Transform playerTransform; // Referência à transformação do jogador.
         private GameObject[] spawnPoints; // Pontos de spawn no cenário.
         private int currentEnemies = 0; // Quantidade atual de inimigos spawnados.
         private float timeFromLastSpawn = 0; // Tempo desde o último spawn.
-
-        private const int MAX_DISTANCE_FROM_ORIGIN = 9999; // Distância máxima permitida para spwanar inimigos.
 
         /// <summary>
         /// Quantidade atual de inimigos spawnados.
@@ -35,8 +33,8 @@ namespace StalinKilledMelons.Managers
 
         private void Awake()
         {
-            spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint"); // Encontra os pontos de spawn no cenário.
-            playerTransform = GameObject.FindGameObjectWithTag("Player").transform; // Encontra a transformação do jogador.
+            spawnPoints = GameObject.FindGameObjectsWithTag(Constants.SpawnPointTag); // Encontra os pontos de spawn no cenário.
+            playerTransform = GameObject.FindGameObjectWithTag(Constants.PlayerTag).transform; // Encontra a transformação do jogador.
         }
 
         private void Update()
@@ -59,7 +57,7 @@ namespace StalinKilledMelons.Managers
 
             Vector3 spawnPosition = SelectSpawnPointPosition(); // Seleciona a posição de spawn.
 
-            if (Mathf.Abs(spawnPosition.magnitude) >= Mathf.Abs((Vector3.one * MAX_DISTANCE_FROM_ORIGIN).magnitude)) return;
+            if (Mathf.Abs(spawnPosition.magnitude) >= Mathf.Abs((Vector3.one * Constants.MaxDistanceToSpawn).magnitude)) return;
 
             Instantiate(enemyPrefab, spawnPosition, Quaternion.identity); // Instancia o inimigo spawnado.
 

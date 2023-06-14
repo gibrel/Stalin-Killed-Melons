@@ -21,7 +21,7 @@ namespace StalinKilledMelons.Gameplay.Camera
 
         private void Awake()
         {
-            targetObject = GameObject.FindGameObjectWithTag("Player");
+            targetObject = GameObject.FindGameObjectWithTag(Constants.PlayerTag);
         }
 
         private void Update()

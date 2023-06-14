@@ -53,7 +53,7 @@ namespace StalinKilledMelons.Gameplay.Audio
             {
                 if (musicGameObject == null)
                 {
-                    musicGameObject = new GameObject("Music Player");
+                    musicGameObject = new GameObject(Constants.MusicPlayerGameObj);
                     musicAudioSource = musicGameObject.AddComponent<AudioSource>();
                 }
                 musicAudioSource.clip = GetAudioClip(music);
@@ -72,7 +72,7 @@ namespace StalinKilledMelons.Gameplay.Audio
             {
                 if (oneShotGameObject == null)
                 {
-                    oneShotGameObject = new GameObject("One Shot Sound");
+                    oneShotGameObject = new GameObject(Constants.OneShotSoundGameObj);
                     oneShotAudioSource = oneShotGameObject.AddComponent<AudioSource>();
                 }
                 oneShotAudioSource.volume = GetVolume();
@@ -87,7 +87,7 @@ namespace StalinKilledMelons.Gameplay.Audio
         {
             if (CanPlaySound(sound))
             {
-                GameObject soundGameObject = new GameObject("Sound");
+                GameObject soundGameObject = new GameObject(Constants.SoundGameObj);
                 soundGameObject.transform.position = position;
                 AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
                 audioSource.clip = GetAudioClip(sound);
@@ -227,7 +227,7 @@ namespace StalinKilledMelons.Gameplay.Audio
 
         private static float GetVolume()
         {
-            GameAssets.Instance.audioMixer.GetFloat("volume", out float volume);
+            GameAssets.Instance.audioMixer.GetFloat(Constants.VolumeAudioMixer, out float volume);
             volume = Mathf.InverseLerp(-80f, 20f, volume);
             return volume;
         }

@@ -34,7 +34,7 @@ namespace StalinKilledMelons.Gameplay.UI
         /// <param name="volume">O valor do volume a ser definido.</param>
         public void SetVolume(float volume)
         {
-            audioMixer.SetFloat("volume", volume);
+            audioMixer.SetFloat(Constants.VolumeAudioMixer, volume);
         }
 
         /// <summary>

@@ -7,15 +7,13 @@ namespace StalinKilledMelons.Managers
     /// </summary>
     public static class SaveLoadManager
     {
-        private const string PLAYER_PROGRESS = "PlayerProgress";
-
         /// <summary>
         /// Salva o progresso do jogador.
         /// </summary>
         public static void SavePlayerProgress(PlayerProgressData playerProgressData)
         {
             string json = JsonUtility.ToJson(playerProgressData);
-            PlayerPrefs.SetString(PLAYER_PROGRESS, json);
+            PlayerPrefs.SetString(Constants.PlayerProgressKey, json);
         }
 
         /// <summary>
@@ -24,7 +22,7 @@ namespace StalinKilledMelons.Managers
         /// <returns>O progresso do jogador.</returns>
         public static PlayerProgressData LoadPlayerProgress()
         {
-            string json = PlayerPrefs.GetString(PLAYER_PROGRESS);
+            string json = PlayerPrefs.GetString(Constants.PlayerProgressKey);
             if (!string.IsNullOrEmpty(json))
             {
                 return JsonUtility.FromJson<PlayerProgressData>(json);

@@ -23,7 +23,7 @@ namespace StalinKilledMelons.Managers
         private void Start()
         {
             // Carrega a pontuação mais alta salva anteriormente.
-            highScore = PlayerPrefs.GetFloat("HighScore", 0f);
+            highScore = PlayerPrefs.GetFloat(Constants.HighScoreKey, 0f);
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace StalinKilledMelons.Managers
         /// </summary>
         private void SaveHighScore()
         {
-            PlayerPrefs.SetFloat("HighScore", highScore);
+            PlayerPrefs.SetFloat(Constants.HighScoreKey, highScore);
             PlayerPrefs.Save();
         }
 

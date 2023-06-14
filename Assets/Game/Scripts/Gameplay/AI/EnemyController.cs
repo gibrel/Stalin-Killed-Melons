@@ -26,7 +26,7 @@ namespace StalinKilledMelons.Gameplay.AI
         /// </summary>
         private void Awake()
         {
-            player = GameObject.FindGameObjectWithTag("Player");
+            player = GameObject.FindGameObjectWithTag(Constants.PlayerTag);
             navMeshAgent = GetComponent<NavMeshAgent>();
             navigation = GetComponent<Navigation>();
         }

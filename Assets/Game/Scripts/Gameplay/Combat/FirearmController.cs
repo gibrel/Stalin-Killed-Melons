@@ -34,7 +34,7 @@ namespace StalinKilledMelons.Gameplay.Combat
 
             if (!isFromPlayer)
             {
-                var player = GameObject.FindGameObjectWithTag("Player");
+                var player = GameObject.FindGameObjectWithTag(Constants.PlayerTag);
                 playerTransform = player.transform;
             }
         }

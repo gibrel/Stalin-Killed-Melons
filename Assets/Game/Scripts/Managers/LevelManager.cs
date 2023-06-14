@@ -10,7 +10,6 @@ namespace StalinKilledMelons.Managers
     /// </summary>
     public class LevelManager : MonoBehaviour
     {
-        private const string PLAYER_PREFERENCES = "PlayerPreferences";
         [SerializeField] private float timeToWait = 1f; // Tempo de espera antes de carregar um novo nível ou encerrar o jogo.
         [SerializeField] private Animator[] transitions; // Array de animators para as transições entre os níveis.
         [SerializeField] private PauseMenu pauseMenu; // Referência ao menu de pausa.
@@ -19,7 +18,7 @@ namespace StalinKilledMelons.Managers
 
         private void Awake()
         {
-            playerPreferences = GameObject.FindGameObjectWithTag(PLAYER_PREFERENCES).GetComponent<PlayerPreferences>(); // Encontra o PlayerPreferences na cena e atribui à variável playerPreferences.
+            playerPreferences = GameObject.FindGameObjectWithTag(Constants.PlayerPreferencesTag).GetComponent<PlayerPreferences>(); // Encontra o PlayerPreferences na cena e atribui à variável playerPreferences.
         }
 
         private void SavePreferences()
@@ -113,7 +112,7 @@ namespace StalinKilledMelons.Managers
 
         private IEnumerator LoadLevelAsync(string levelName)
         {
-            GetRandomTransition().SetTrigger("Start");
+            GetRandomTransition().SetTrigger(Constants.StartTrigger);
 
             yield return new WaitForSeconds(timeToWait);
 
@@ -126,7 +125,7 @@ namespace StalinKilledMelons.Managers
 
         private IEnumerator LoadLevelAsync(int buildIndex)
         {
-            GetRandomTransition().SetTrigger("Start");
+            GetRandomTransition().SetTrigger(Constants.StartTrigger);
 
             yield return new WaitForSeconds(timeToWait);
 
@@ -139,7 +138,7 @@ namespace StalinKilledMelons.Managers
 
         private IEnumerator QuitApplication()
         {
-            GetRandomTransition().SetTrigger("Start");
+            GetRandomTransition().SetTrigger(Constants.StartTrigger);
 
             yield return new WaitForSeconds(timeToWait);
 

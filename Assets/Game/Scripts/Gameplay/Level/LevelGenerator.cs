@@ -51,7 +51,7 @@ namespace StalinKilledMelons.Gameplay.Level
 
         private void Start()
         {
-            LevelContainer = new GameObject("Level").transform; // Cria um objeto vazio para agrupar os blocos do nível.
+            LevelContainer = new GameObject(Constants.LevelGameObj).transform; // Cria um objeto vazio para agrupar os blocos do nível.
 
             GenerateLevel();
         }
@@ -61,13 +61,13 @@ namespace StalinKilledMelons.Gameplay.Level
         /// </summary>
         public void GenerateLevel()
         {
-            GameObject terrainObject = GameObject.FindGameObjectWithTag("Terrain");
+            GameObject terrainObject = GameObject.FindGameObjectWithTag(Constants.TerrainTag);
 
             // Cria o objeto do terreno se ele não existir.
             if (terrainObject == null)
             {
-                terrainObject = new GameObject("Terrain");
-                terrainObject.tag = "Terrain";
+                terrainObject = new GameObject(Constants.TerrainGameObj);
+                terrainObject.tag = Constants.TerrainTag;
                 terrainObject.transform.position = Vector3.zero;
             }
 

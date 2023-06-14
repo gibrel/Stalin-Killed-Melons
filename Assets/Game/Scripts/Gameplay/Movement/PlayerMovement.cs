@@ -26,8 +26,8 @@ namespace StalinKilledMelons.Gameplay.Movement
         /// </summary>
         private void HandleInput()
         {
-            float moveX = Input.GetAxis("Horizontal");
-            float moveZ = Input.GetAxis("Vertical");
+            float moveX = Input.GetAxis(Constants.HorizontalAxisControll);
+            float moveZ = Input.GetAxis(Constants.VerticalAxisControll);
 
             Vector3 movement = new Vector3(moveX, 0f, moveZ).normalized * moveSpeed;
             navigation.SetTarget(movement);

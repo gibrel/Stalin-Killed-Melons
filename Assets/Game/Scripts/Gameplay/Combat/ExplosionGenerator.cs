@@ -53,7 +53,7 @@ namespace StalinKilledMelons.Gameplay.Combat
             if (explosionAnimator != null)
             {
                 // Ativa a animação da explosão
-                explosionAnimator.SetTrigger("Explode");
+                explosionAnimator.SetTrigger(Constants.ExplosionTrigger);
             }
 
             // Destroi o objeto da explosão após um tempo
