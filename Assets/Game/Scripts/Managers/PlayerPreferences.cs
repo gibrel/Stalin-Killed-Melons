@@ -53,5 +53,18 @@ namespace StalinKilledMelons.Managers
 
             GameAssets.Instance.audioMixer.SetFloat(Constants.VolumeAudioMixer, Mathf.Lerp(-80f, 20f, volume));
         }
+
+        /// <summary>
+        /// Obtém a chave de controle personalizada para o nome do controle especificado.
+        /// Se não houver uma chave personalizada, retorna a chave padrão.
+        /// </summary>
+        public string GetControlKey(string controlName)
+        {
+            string customControlKey = PlayerPrefs.GetString(controlName);
+            if (!string.IsNullOrEmpty(customControlKey))
+                return customControlKey;
+            else
+                return Constants.DefaultControlKeys[controlName];
+        }
     }
 }

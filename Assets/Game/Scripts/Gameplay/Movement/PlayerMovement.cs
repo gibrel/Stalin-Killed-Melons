@@ -1,3 +1,4 @@
+using StalinKilledMelons.Managers;
 using UnityEngine;
 
 namespace StalinKilledMelons.Gameplay.Movement
@@ -10,10 +11,12 @@ namespace StalinKilledMelons.Gameplay.Movement
     {
         [SerializeField] private float moveSpeed = 5f; // Velocidade de movimento do jogador
         private Navigation navigation; // Componente de navegação
+        private InputManager inputManager; // Gerenciador de entrada do jogador
 
         private void Awake()
         {
             navigation = GetComponent<Navigation>();
+            inputManager = FindObjectOfType<InputManager>();
         }
 
         private void Update()
@@ -26,8 +29,8 @@ namespace StalinKilledMelons.Gameplay.Movement
         /// </summary>
         private void HandleInput()
         {
-            float moveX = Input.GetAxis(Constants.HorizontalAxisControll);
-            float moveZ = Input.GetAxis(Constants.VerticalAxisControll);
+            float moveX = inputManager.GetHorizontalAxis();
+            float moveZ = inputManager.GetVerticalAxis();
 
             Vector3 movement = new Vector3(moveX, 0f, moveZ).normalized * moveSpeed;
             navigation.SetTarget(movement);

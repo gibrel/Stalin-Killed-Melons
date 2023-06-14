@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace StalinKilledMelons
 {
     /// <summary>
@@ -29,8 +31,16 @@ namespace StalinKilledMelons
 
         // Strings de controle
         public const string VolumeAudioMixer = "volume";
-        public const string HorizontalAxisControll = "Horizontal";
-        public const string VerticalAxisControll = "Vertical";
+        public const string HorizontalAxisControl = "Horizontal";
+        public const string VerticalAxisControl = "Vertical";
+        public const string ShootControl = "ShootControl";
+        public const string RunControl = "RunControl";
+        public const string DodgeControl = "DodgeControl";
+        public const string Ability1Control = "Ability1Control";
+        public const string Ability2Control = "Ability2Control";
+        public const string Ability3Control = "Ability3Control";
+        public const string Ability4Control = "Ability4Control";
+        public const string Ability5Control = "Ability5Control";
 
         // Strings de preferências de usuário
         public const string PlayerNameKey = "PlayerName";
@@ -60,5 +70,22 @@ namespace StalinKilledMelons
         public const float MinDistanceToSpawn = 20f;
         public const float MaxLevelDuration = 180f;
         public const float MinLevelDuration = 60f;
+
+        /// <summary>
+        /// Dicionário que armazena as chaves padrão para os controles.
+        /// </summary>
+        public static readonly Dictionary<string, string> DefaultControlKeys = new Dictionary<string, string>
+        {
+            { ShootControl, "Mouse0" },       // Controle de tiro com o mouse
+            { "MousePositionControl", "Mouse1" }, // Controle de posicionamento do mouse
+            { RunControl, "LeftShift" },      // Tecla para correr
+            { DodgeControl, "Space" },        // Tecla para esquivar
+            { Ability1Control, "1" },         // Tecla para ativar habilidade 1
+            { Ability2Control, "2" },         // Tecla para ativar habilidade 2
+            { Ability3Control, "3" },         // Tecla para ativar habilidade 3
+            { Ability4Control, "4" },         // Tecla para ativar habilidade 4
+            { Ability5Control, "5" }          // Tecla para ativar habilidade 5
+        };
+
     }
 }
