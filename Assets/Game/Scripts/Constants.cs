@@ -34,6 +34,7 @@ namespace StalinKilledMelons
         public const string HorizontalAxisControl = "Horizontal";
         public const string VerticalAxisControl = "Vertical";
         public const string ShootControl = "ShootControl";
+        public const string MousePositionControl = "MousePositionControl";
         public const string RunControl = "RunControl";
         public const string DodgeControl = "DodgeControl";
         public const string Ability1Control = "Ability1Control";
@@ -48,6 +49,9 @@ namespace StalinKilledMelons
         public const string MusicVolumeKey = "MusicVolume";
         public const string SpawnFrequencyKey = "SpawnFrequency";
         public const string GameTimeKey = "GameTime";
+        public const string GameStartTimeKey = "GameStartTime";
+        public const string EnemiesKilledKey = "EnemiesKilled";
+        public const string TotalPlayTimeKey = "TotalPlayTime";
         public const string PlayerProgressKey = "PlayerProgress";
         public const string HighScoreKey = "HighScore";
 
@@ -77,7 +81,7 @@ namespace StalinKilledMelons
         public static readonly Dictionary<string, string> DefaultControlKeys = new Dictionary<string, string>
         {
             { ShootControl, "Mouse0" },       // Controle de tiro com o mouse
-            { "MousePositionControl", "Mouse1" }, // Controle de posicionamento do mouse
+            { MousePositionControl, "Mouse1" }, // Controle de posicionamento do mouse
             { RunControl, "LeftShift" },      // Tecla para correr
             { DodgeControl, "Space" },        // Tecla para esquivar
             { Ability1Control, "1" },         // Tecla para ativar habilidade 1
