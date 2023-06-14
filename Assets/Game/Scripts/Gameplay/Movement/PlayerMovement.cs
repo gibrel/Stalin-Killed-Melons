@@ -26,27 +26,8 @@ namespace StalinKilledMelons.Gameplay.Movement
         /// </summary>
         private void HandleInput()
         {
-            float moveX = 0f;
-            float moveZ = 0f;
-
-            // Verifica as teclas pressionadas para determinar o movimento
-            if (Input.GetKey(KeyCode.W))
-            {
-                moveZ = 1f;
-            }
-            else if (Input.GetKey(KeyCode.S))
-            {
-                moveZ = -1f;
-            }
-
-            if (Input.GetKey(KeyCode.A))
-            {
-                moveX = -1f;
-            }
-            else if (Input.GetKey(KeyCode.D))
-            {
-                moveX = 1f;
-            }
+            float moveX = Input.GetAxis("Horizontal");
+            float moveZ = Input.GetAxis("Vertical");
 
             Vector3 movement = new Vector3(moveX, 0f, moveZ).normalized * moveSpeed;
             navigation.SetTarget(movement);
