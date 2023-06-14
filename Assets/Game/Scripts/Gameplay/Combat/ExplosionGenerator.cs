@@ -1,8 +1,8 @@
+using StalinKilledMelons.Managers;
 using UnityEngine;
 
 namespace StalinKilledMelons.Gameplay.Combat
 {
-
     /// <summary>
     /// Classe responsável por gerar uma explosão no ambiente.
     /// </summary>
@@ -15,8 +15,11 @@ namespace StalinKilledMelons.Gameplay.Combat
         public GameObject explosionParticlesPrefab; // Prefab das partículas da explosão
         public Animator explosionAnimator; // Animator para controlar a animação da explosão
 
+        private EffectsManager effectsManager; // Referência ao EffectsManager
+
         private void Start()
         {
+            effectsManager = FindObjectOfType<EffectsManager>(); // Encontra o EffectsManager na cena
             Explode();
         }
 
@@ -54,6 +57,12 @@ namespace StalinKilledMelons.Gameplay.Combat
             {
                 // Ativa a animação da explosão
                 explosionAnimator.SetTrigger(Constants.ExplosionTrigger);
+            }
+
+            // Chama o EffectsManager para reproduzir a explosão
+            if (effectsManager != null)
+            {
+                effectsManager.PlayExplosion(transform.position);
             }
 
             // Destroi o objeto da explosão após um tempo
