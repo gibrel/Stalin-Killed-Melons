@@ -8,6 +8,9 @@ namespace StalinKilledMelons.Managers
     /// </summary>
     public class PlayerPreferences : MonoBehaviour
     {
+        private const string VOLUME = "volume";
+        private const string SPAWN_FREQUENCY = "spawnFrequency";
+        private const string GAME_TIME = "gameTime";
         private float volume; // Volume do jogo.
         private int spawnFreq; // Frequência de spawn.
         private int gameTime; // Tempo de jogo.
@@ -37,21 +40,21 @@ namespace StalinKilledMelons.Managers
         /// </summary>
         public void SavePlayerPreferences()
         {
-            GameAssets.Instance.audioMixer.GetFloat("volume", out float volume);
+            GameAssets.Instance.audioMixer.GetFloat(VOLUME, out float volume);
             volume = Mathf.InverseLerp(-80f, 20f, volume);
 
-            PlayerPrefs.SetFloat("volume", volume);
-            PlayerPrefs.SetInt("spawnFrequency", spawnFreq);
-            PlayerPrefs.SetInt("gameTime", gameTime);
+            PlayerPrefs.SetFloat(VOLUME, volume);
+            PlayerPrefs.SetInt(SPAWN_FREQUENCY, spawnFreq);
+            PlayerPrefs.SetInt(GAME_TIME, gameTime);
         }
 
         private void LoadPlayerPreferences()
         {
-            volume = PlayerPrefs.GetFloat("volume");
-            spawnFreq = PlayerPrefs.GetInt("spawnFrequency");
-            gameTime = PlayerPrefs.GetInt("gameTime");
+            volume = PlayerPrefs.GetFloat(VOLUME);
+            spawnFreq = PlayerPrefs.GetInt(SPAWN_FREQUENCY);
+            gameTime = PlayerPrefs.GetInt(GAME_TIME);
 
-            GameAssets.Instance.audioMixer.SetFloat("volume", Mathf.Lerp(-80f, 20f, volume));
+            GameAssets.Instance.audioMixer.SetFloat(VOLUME, Mathf.Lerp(-80f, 20f, volume));
         }
     }
 }
