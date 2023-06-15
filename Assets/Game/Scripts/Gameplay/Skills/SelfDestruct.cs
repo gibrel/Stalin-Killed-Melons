@@ -4,9 +4,9 @@ using UnityEngine;
 namespace StalinKilledMelons.Gameplay.Skills
 {
     /// <summary>
-    /// Classe responsável por destruir um objeto após um determinado período de tempo.
+    /// Classe responsável por destruir um objeto após um determinado período de tempo como uma habilidade.
     /// </summary>
-    public class SelfDestruct : MonoBehaviour
+    public class SelfDestruct : Skill
     {
         [SerializeField] private float duration = 1f;
 
@@ -27,6 +27,22 @@ namespace StalinKilledMelons.Gameplay.Skills
         {
             yield return new WaitForSeconds(duration);
             Destroy(gameObject);
+        }
+
+        /// <summary>
+        /// Ativa a habilidade de autodestruição.
+        /// </summary>
+        public override void Activate()
+        {
+            enabled = true;
+        }
+
+        /// <summary>
+        /// Desativa a habilidade de autodestruição.
+        /// </summary>
+        public override void Deactivate()
+        {
+            enabled = false;
         }
     }
 }

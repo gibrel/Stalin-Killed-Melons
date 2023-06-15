@@ -4,9 +4,9 @@ using UnityEngine;
 namespace StalinKilledMelons.Gameplay.Skills
 {
     /// <summary>
-    /// Classe responsável pelo controle de disparo de armas.
+    /// Classe responsável pelo controle de disparo de armas como uma habilidade.
     /// </summary>
-    public class ShootController : MonoBehaviour
+    public class WeaponFireController : Skill
     {
         [SerializeField] private FirearmController[] firearms;
 
@@ -36,6 +36,22 @@ namespace StalinKilledMelons.Gameplay.Skills
                     gun.Shoot();
                 }
             }
+        }
+
+        /// <summary>
+        /// Ativa a habilidade de disparo.
+        /// </summary>
+        public override void Activate()
+        {
+            enabled = true;
+        }
+
+        /// <summary>
+        /// Desativa a habilidade de disparo.
+        /// </summary>
+        public override void Deactivate()
+        {
+            enabled = false;
         }
     }
 }
