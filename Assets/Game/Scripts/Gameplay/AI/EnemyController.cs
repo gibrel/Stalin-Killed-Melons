@@ -7,7 +7,7 @@ namespace StalinKilledMelons.Gameplay.AI
     /// <summary>
     /// Controla o comportamento de um inimigo.
     /// </summary>
-    public class EnemyController : MonoBehaviour
+    public class EnemyController : CharacterController
     {
         [SerializeField] private float activationDistance = 10f;
         [SerializeField] private float viewAngle = 60f;
@@ -21,19 +21,14 @@ namespace StalinKilledMelons.Gameplay.AI
         private bool erraticallyMoving = false;
         private float lastErraticMovementTime;
 
-        /// <summary>
-        /// Chamado quando o objeto é criado.
-        /// </summary>
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             player = GameObject.FindGameObjectWithTag(Constants.PlayerTag);
             navMeshAgent = GetComponent<NavMeshAgent>();
             navigation = GetComponent<Navigation>();
         }
 
-        /// <summary>
-        /// Chamado a cada quadro.
-        /// </summary>
         private void Update()
         {
             if (!activated)
@@ -123,6 +118,11 @@ namespace StalinKilledMelons.Gameplay.AI
 
                 lastErraticMovementTime = Time.time;
             }
+        }
+
+        protected override void HandleInput()
+        {
+            // Implementação vazia, pois o inimigo não lida com entrada do jogador
         }
     }
 }

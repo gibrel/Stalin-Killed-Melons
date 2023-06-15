@@ -6,7 +6,7 @@ namespace StalinKilledMelons.Gameplay.AI
     /// <summary>
     /// Controla a inteligência artificial de um grupo de inimigos.
     /// </summary>
-    public class AIController : MonoBehaviour
+    public class EnemyGroupAI : MonoBehaviour
     {
         [SerializeField] private List<EnemyController> enemies = new List<EnemyController>();
 

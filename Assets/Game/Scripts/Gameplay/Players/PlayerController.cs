@@ -1,22 +1,21 @@
-using StalinKilledMelons.Managers;
+using StalinKilledMelons.Gameplay.Movement;
 using UnityEngine;
 
-namespace StalinKilledMelons.Gameplay.Movement
+namespace StalinKilledMelons.Gameplay.Players
 {
     /// <summary>
-    /// Classe responsável pelo movimento do jogador.
+    /// Classe responsável pelo controle do jogador.
     /// </summary>
     [RequireComponent(typeof(Navigation))]
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerController : CharacterController
     {
         [SerializeField] private float moveSpeed = 5f; // Velocidade de movimento do jogador
         private Navigation navigation; // Componente de navegação
-        private InputManager inputManager; // Gerenciador de entrada do jogador
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             navigation = GetComponent<Navigation>();
-            inputManager = FindObjectOfType<InputManager>();
         }
 
         private void Update()
@@ -27,7 +26,7 @@ namespace StalinKilledMelons.Gameplay.Movement
         /// <summary>
         /// Lida com a entrada do jogador para mover o personagem.
         /// </summary>
-        private void HandleInput()
+        protected override void HandleInput()
         {
             float moveX = inputManager.GetHorizontalAxis();
             float moveZ = inputManager.GetVerticalAxis();
