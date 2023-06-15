@@ -12,6 +12,8 @@ namespace StalinKilledMelons.Gameplay.UI
         [SerializeField] private MainMenu mainMenu; // Referência ao menu principal
         [SerializeField] private ConfigMenu configMenu; // Referência ao menu de configurações
         [SerializeField] private AchievementPanel achievementPanel; // Referência ao painel de conquistas
+        [SerializeField] private DialogueUI dialogueUI; // Referência ao painel de conquistas
+
 
         /// <summary>
         /// Exibe o menu de pausa.
@@ -108,6 +110,22 @@ namespace StalinKilledMelons.Gameplay.UI
         public void HideAchievements()
         {
             achievementPanel.HideAchievements();
+        }
+
+        /// <summary>
+        /// Mostra as conquistas obtidas no painel de conquistas.
+        /// </summary>
+        public void ShowDialogueUI()
+        {
+            dialogueUI.ShowDialogueUI();
+        }
+
+        /// <summary>
+        /// Oculta o painel de conquistas.
+        /// </summary>
+        public void HideDialogueUI()
+        {
+            dialogueUI.HideDialogueUI();
         }
 
     }
