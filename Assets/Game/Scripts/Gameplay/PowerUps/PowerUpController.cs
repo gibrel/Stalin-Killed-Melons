@@ -9,47 +9,27 @@ namespace StalinKilledMelons.Gameplay.PowerUps
     public class PowerUpController : MonoBehaviour
     {
         [SerializeField] private List<PowerUp> powerUps; // Lista de power-ups distintos
-        [SerializeField] private float powerUpSpawnTime = 10f; // Tempo entre o surgimento de power-ups
+        [SerializeField] private float powerUpDuration = 10f; // Duração padrão do efeito do power-up
 
         private bool isPowerUpActive = false; // Indica se um power-up está ativo no momento
-
-        private void Start()
-        {
-            InvokeRepeating(nameof(SpawnPowerUp), powerUpSpawnTime, powerUpSpawnTime); // Inicia a repetição do surgimento de power-ups
-        }
-
-        /// <summary>
-        /// Surgimento de um power-up no jogo.
-        /// </summary>
-        private void SpawnPowerUp()
-        {
-            if (!isPowerUpActive)
-            {
-                // Escolhe um power-up aleatório da lista
-                PowerUp randomPowerUp = powerUps[Random.Range(0, powerUps.Count)];
-
-                // Lógica para instanciar um power-up no jogo
-                // Por exemplo, você pode criar um objeto PowerUp na cena e ativá-lo
-
-                // Armazena o power-up selecionado para uso posterior
-                ActivatePowerUp(randomPowerUp);
-            }
-        }
 
         /// <summary>
         /// Ativa o efeito do power-up.
         /// </summary>
         /// <param name="powerUp">O power-up a ser ativado.</param>
-        private void ActivatePowerUp(PowerUp powerUp)
+        public void ActivatePowerUp(PowerUp powerUp)
         {
             if (isPowerUpActive)
                 return;
 
+            isPowerUpActive = true;
+
             // Lógica para ativar o efeito do power-up no jogador
             // Por exemplo, aumentar a velocidade do jogador por um determinado período de tempo
 
-            // Desativa o power-up após o tempo especificado
-            Invoke(nameof(DeactivatePowerUp), powerUp.duration);
+            // Desativa o power-up após a duração especificada ou com base na duração do power-up fornecido
+            float duration = powerUp != null ? powerUp.duration : powerUpDuration;
+            Invoke(nameof(DeactivatePowerUp), duration);
         }
 
         /// <summary>
