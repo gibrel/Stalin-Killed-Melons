@@ -5,7 +5,7 @@ namespace StalinKilledMelons.Gameplay.Skills
     /// <summary>
     /// Classe base para habilidades.
     /// </summary>
-    public abstract class Skill : MonoBehaviour
+    public abstract class BaseSkill : MonoBehaviour
     {
         /// <summary>
         /// Ativa a habilidade.

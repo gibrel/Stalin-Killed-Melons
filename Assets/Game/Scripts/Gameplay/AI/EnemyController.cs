@@ -123,6 +123,27 @@ namespace StalinKilledMelons.Gameplay.AI
         protected override void HandleInput()
         {
             // Implementação vazia, pois o inimigo não lida com entrada do jogador
+
+            // Outras ações do inimigo
+            if (isShooting)
+            {
+                // Implementação para o disparo do inimigo
+            }
+
+            if (isRunning)
+            {
+                // Implementação para a corrida do inimigo
+            }
+
+            if (isDodging)
+            {
+                // Implementação para a esquiva do inimigo
+            }
+
+            if (isBlocking)
+            {
+                // Implementação para o bloqueio do inimigo
+            }
         }
     }
 }

@@ -1,15 +1,12 @@
-using StalinKilledMelons.Gameplay.Combat;
 using StalinKilledMelons.Managers;
-using UnityEngine;
 
 namespace StalinKilledMelons.Gameplay.Skills
 {
     /// <summary>
-    /// Classe responsável pelo controle de disparo de armas como uma habilidade.
+    /// Habilidade que permite correr.
     /// </summary>
-    public class WeaponFireController : BaseSkill
+    public class RunSkill : BaseSkill
     {
-        [SerializeField] private FirearmController[] firearms;
         private InputManager inputManager;
         private CharacterController characterController;
 
@@ -20,28 +17,24 @@ namespace StalinKilledMelons.Gameplay.Skills
         }
 
         /// <summary>
-        /// Ativa a habilidade de disparo.
+        /// Ativa a habilidade de correr.
         /// </summary>
         public override void Activate()
         {
-            characterController.SetShooting(true);
-            foreach (FirearmController gun in firearms)
-            {
-                gun.Shoot();
-            }
+            characterController.SetRunning(true);
         }
 
         /// <summary>
-        /// Desativa a habilidade de disparo.
+        /// Desativa a habilidade de correr.
         /// </summary>
         public override void Deactivate()
         {
-            characterController.SetShooting(false);
+            characterController.SetRunning(false);
         }
 
         private void Update()
         {
-            if (inputManager.GetShootInput())
+            if (inputManager.GetRunInput())
             {
                 Activate();
             }

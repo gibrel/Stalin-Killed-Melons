@@ -37,6 +37,7 @@ namespace StalinKilledMelons
         public const string MousePositionControl = "MousePositionControl";
         public const string RunControl = "RunControl";
         public const string DodgeControl = "DodgeControl";
+        public const string BlockControl = "BlockControl";
         public const string Ability1Control = "Ability1Control";
         public const string Ability2Control = "Ability2Control";
         public const string Ability3Control = "Ability3Control";
@@ -84,6 +85,7 @@ namespace StalinKilledMelons
             { MousePositionControl, "Mouse1" }, // Controle de posicionamento do mouse
             { RunControl, "LeftShift" },      // Tecla para correr
             { DodgeControl, "Space" },        // Tecla para esquivar
+            { BlockControl, "LeftControl" },  // Tecla para bloquear
             { Ability1Control, "1" },         // Tecla para ativar habilidade 1
             { Ability2Control, "2" },         // Tecla para ativar habilidade 2
             { Ability3Control, "3" },         // Tecla para ativar habilidade 3

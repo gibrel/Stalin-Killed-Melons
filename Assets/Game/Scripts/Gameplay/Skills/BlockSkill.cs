@@ -1,15 +1,12 @@
-using StalinKilledMelons.Gameplay.Combat;
 using StalinKilledMelons.Managers;
-using UnityEngine;
 
 namespace StalinKilledMelons.Gameplay.Skills
 {
     /// <summary>
-    /// Classe responsável pelo controle de disparo de armas como uma habilidade.
+    /// Habilidade que permite bloquear ataques.
     /// </summary>
-    public class WeaponFireController : BaseSkill
+    public class BlockSkill : BaseSkill
     {
-        [SerializeField] private FirearmController[] firearms;
         private InputManager inputManager;
         private CharacterController characterController;
 
@@ -20,28 +17,24 @@ namespace StalinKilledMelons.Gameplay.Skills
         }
 
         /// <summary>
-        /// Ativa a habilidade de disparo.
+        /// Ativa a habilidade de bloquear.
         /// </summary>
         public override void Activate()
         {
-            characterController.SetShooting(true);
-            foreach (FirearmController gun in firearms)
-            {
-                gun.Shoot();
-            }
+            characterController.StartBlock();
         }
 
         /// <summary>
-        /// Desativa a habilidade de disparo.
+        /// Desativa a habilidade de bloquear.
         /// </summary>
         public override void Deactivate()
         {
-            characterController.SetShooting(false);
+            characterController.StopBlock();
         }
 
         private void Update()
         {
-            if (inputManager.GetShootInput())
+            if (inputManager.GetBlockInput())
             {
                 Activate();
             }

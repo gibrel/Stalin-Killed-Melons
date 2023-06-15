@@ -33,6 +33,39 @@ namespace StalinKilledMelons.Gameplay.Players
 
             Vector3 movement = new Vector3(moveX, 0f, moveZ).normalized * moveSpeed;
             navigation.SetTarget(movement);
+
+            // Outras ações do jogador
+            if (inputManager.GetShootInput())
+            {
+                SetShooting(true);
+            }
+            else
+            {
+                SetShooting(false);
+            }
+
+            if (inputManager.GetRunInput())
+            {
+                SetRunning(true);
+            }
+            else
+            {
+                SetRunning(false);
+            }
+
+            if (inputManager.GetDodgeInput())
+            {
+                StartDodge();
+            }
+
+            if (inputManager.GetBlockInput())
+            {
+                StartBlock();
+            }
+            else
+            {
+                StopBlock();
+            }
         }
     }
 }

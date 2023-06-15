@@ -6,7 +6,7 @@ namespace StalinKilledMelons.Gameplay.Skills
     /// <summary>
     /// Classe responsável por destruir um objeto após um determinado período de tempo como uma habilidade.
     /// </summary>
-    public class SelfDestruct : Skill
+    public class SelfDestruct : BaseSkill
     {
         [SerializeField] private float duration = 1f;
 

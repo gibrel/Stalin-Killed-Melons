@@ -68,6 +68,15 @@ namespace StalinKilledMelons.Managers
         }
 
         /// <summary>
+        /// Obtém a entrada para bloquear do jogador.
+        /// </summary>
+        public bool GetBlockInput()
+        {
+            string controlKey = playerPreferences.GetControlKey(Constants.BlockControl);
+            return Input.GetButton(controlKey);
+        }
+
+        /// <summary>
         /// Obtém a entrada para ativar a habilidade 1 do jogador.
         /// </summary>
         public bool GetAbility1Input()
