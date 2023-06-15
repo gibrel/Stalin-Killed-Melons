@@ -29,7 +29,7 @@ namespace StalinKilledMelons.Gameplay.AI
             navigation = GetComponent<Navigation>();
         }
 
-        private void Update()
+        protected override void Update()
         {
             if (!activated)
             {
@@ -39,6 +39,7 @@ namespace StalinKilledMelons.Gameplay.AI
                 }
                 else
                 {
+                    HandleInput();
                     PerformErraticMovement();
                 }
             }

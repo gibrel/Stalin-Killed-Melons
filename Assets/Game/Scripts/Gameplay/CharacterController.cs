@@ -19,6 +19,11 @@ namespace StalinKilledMelons.Gameplay
             inputManager = FindObjectOfType<InputManager>();
         }
 
+        protected virtual void Update()
+        {
+
+        }
+
         protected abstract void HandleInput();
 
         public void SetShooting(bool shooting)

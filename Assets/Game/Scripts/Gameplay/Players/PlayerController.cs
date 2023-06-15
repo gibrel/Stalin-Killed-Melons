@@ -18,7 +18,7 @@ namespace StalinKilledMelons.Gameplay.Players
             navigation = GetComponent<Navigation>();
         }
 
-        private void Update()
+        protected override void Update()
         {
             HandleInput();
         }
