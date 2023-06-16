@@ -17,7 +17,107 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 930b69fbbfb53c84b9d3bd5d2277c715, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 1207897948160
+    m_Localized: Start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1729157660672
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1761810317312
+    m_Localized: High Score
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1784958681088
+    m_Localized: Level Complete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1815736483840
+    m_Localized: Game Over
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2195895615488
+    m_Localized: Pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2270994628608
+    m_Localized: Resume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2463899058176
+    m_Localized: Restart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2539056791552
+    m_Localized: Exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2599521878016
+    m_Localized: Score
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2671168978944
+    m_Localized: Victory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2667402493952
+    m_Localized: Level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2664219017216
+    m_Localized: Time
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2661568217088
+    m_Localized: Health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2658477015040
+    m_Localized: Ammo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3374998355968
+    m_Localized: Select Difficulty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3367477968896
+    m_Localized: Weapon Upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3364701339648
+    m_Localized: Back to Menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3362180562944
+    m_Localized: Next Level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3358758010880
+    m_Localized: Defeat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3776808484864
+    m_Localized: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3789018103808
+    m_Localized: Play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3786342137856
+    m_Localized: Credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3783653588992
+    m_Localized: Music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3781040537600
+    m_Localized: Sound
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
