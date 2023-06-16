@@ -60,6 +60,7 @@ namespace StalinKilledMelons
         // Strings de gatilho para animação
         public const string ExplosionTrigger = "Explode";
         public const string StartTrigger = "Start";
+        public const string ShowTrigger = "Show";
 
         // Strings de nomes de cenas - verificar se existem na pasta Game/Scenes
         public const string StartupScene = "Startup";
