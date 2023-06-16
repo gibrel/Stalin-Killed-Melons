@@ -61,6 +61,7 @@ namespace StalinKilledMelons
         public const string ExplosionTrigger = "Explode";
         public const string StartTrigger = "Start";
         public const string ShowTrigger = "Show";
+        public const string HideTrigger = "Hide";
         public const string SpeedTrigger = "Speed";
         public const string AttackTrigger = "Attack";
         public const string SpecialAbilityTrigger = "SpecialAbility";
