@@ -55,6 +55,7 @@ namespace StalinKilledMelons
         public const string TotalPlayTimeKey = "TotalPlayTime";
         public const string PlayerProgressKey = "PlayerProgress";
         public const string HighScoreKey = "HighScore";
+        public const string SaveDataKey = "SaveData";
 
         // Strings de gatilho para animação
         public const string ExplosionTrigger = "Explode";
