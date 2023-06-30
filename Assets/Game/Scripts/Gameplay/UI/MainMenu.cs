@@ -17,11 +17,11 @@ namespace StalinKilledMelons.Gameplay.UI
         }
 
         /// <summary>
-        /// Inicia o jogo, carregando o próximo nível.
+        /// Inicia o jogo, carregando o primeiro nível.
         /// </summary>
         public void PlayGame()
         {
-            levelManager.LoadNextLevel();
+            levelManager.LoadLevel(Constants.GameLevelScene);
         }
 
         /// <summary>

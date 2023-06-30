@@ -15,6 +15,11 @@ namespace StalinKilledMelons.Managers
         [SerializeField] private PauseMenu pauseMenu; // Referência ao menu de pausa.
 
         private PlayerPreferences playerPreferences; // Referência para o PlayerPreferences, responsável por armazenar as preferências do jogador.
+        private float loadProgress = 0f;
+        private bool loadComplete = false;
+
+        public float LoadProgress { get => loadProgress; }
+        public bool LoadComplete { get => loadComplete; }
 
         private void Awake()
         {
@@ -43,40 +48,6 @@ namespace StalinKilledMelons.Managers
         {
             SavePreferences();
             StartCoroutine(LoadLevelAsync(SceneManager.GetActiveScene().name));
-        }
-
-        /// <summary>
-        /// Carrega o próximo nível na sequência.
-        /// </summary>
-        public void LoadNextLevel()
-        {
-            SavePreferences();
-            int nextBuildIndex = SceneManager.GetActiveScene().buildIndex + 1;
-            if (nextBuildIndex < SceneManager.sceneCountInBuildSettings)
-            {
-                StartCoroutine(LoadLevelAsync(nextBuildIndex));
-            }
-            else
-            {
-                Debug.LogWarning("Nenhum próximo nível disponível.");
-            }
-        }
-
-        /// <summary>
-        /// Carrega o nível anterior na sequência.
-        /// </summary>
-        public void LoadPreviousLevel()
-        {
-            SavePreferences();
-            int previousBuildIndex = SceneManager.GetActiveScene().buildIndex - 1;
-            if (previousBuildIndex >= 0)
-            {
-                StartCoroutine(LoadLevelAsync(previousBuildIndex));
-            }
-            else
-            {
-                Debug.LogWarning("Nenhum nível anterior disponível.");
-            }
         }
 
         /// <summary>
@@ -112,26 +83,20 @@ namespace StalinKilledMelons.Managers
 
         private IEnumerator LoadLevelAsync(string levelName)
         {
-            GetRandomTransition().SetTrigger(Constants.StartTrigger);
-
-            yield return new WaitForSeconds(timeToWait);
-
             AsyncOperation operation = SceneManager.LoadSceneAsync(levelName);
+
             while (!operation.isDone)
             {
-                yield return null;
-            }
-        }
+                loadProgress = operation.progress;
+                Debug.Log($"Carregando cena... {(int)(loadProgress * 100)}%");
 
-        private IEnumerator LoadLevelAsync(int buildIndex)
-        {
-            GetRandomTransition().SetTrigger(Constants.StartTrigger);
+                if (loadProgress >= 0.9f && !loadComplete)
+                {
+                    loadComplete = true;
+                    GetRandomTransition().SetTrigger(Constants.StartTrigger);
+                    operation.allowSceneActivation = true;
+                }
 
-            yield return new WaitForSeconds(timeToWait);
-
-            AsyncOperation operation = SceneManager.LoadSceneAsync(buildIndex);
-            while (!operation.isDone)
-            {
                 yield return null;
             }
         }
