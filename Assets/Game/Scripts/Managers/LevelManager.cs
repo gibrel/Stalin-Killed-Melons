@@ -90,11 +90,11 @@ namespace StalinKilledMelons.Managers
                 loadProgress = operation.progress;
                 Debug.Log($"Carregando cena... {(int)(loadProgress * 100)}%");
 
-                if (loadProgress >= 0.9f && !loadComplete)
+                if (loadProgress >= 0.85f && !loadComplete)
                 {
-                    loadComplete = true;
                     GetRandomTransition().SetTrigger(Constants.StartTrigger);
                     operation.allowSceneActivation = true;
+                    loadComplete = true;
                 }
 
                 yield return null;
