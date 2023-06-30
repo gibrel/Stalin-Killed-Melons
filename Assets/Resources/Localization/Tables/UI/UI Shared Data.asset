@@ -115,6 +115,10 @@ MonoBehaviour:
     m_Key: play
     m_Metadata:
       m_Items: []
+  - m_Id: 5352977917583360
+    m_Key: loading
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
